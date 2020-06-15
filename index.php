@@ -1,2 +1,2 @@
 <?php
-    echo 'Init';
+    echo 'Hello';
