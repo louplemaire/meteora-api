@@ -30,4 +30,26 @@
         }
     }
 
+    // Energy
+    if(!empty($meteor->mass)){
+        // Calculate time
+        // 100 km of distance, with a speed of 15 km/s
+        // Convert km/s to m/s
+        $v = 15 * 1000; // m/s
+
+        // Convert g to kg
+        $m = $meteor->mass / 1000; 
+
+        // Calculate energy
+        // 0.5 * m (kg) * v^2 (m/s)
+        $Ec = 0.5 * $m * $v * $v; // J
+
+        $meteor->energy_in_joules = round($Ec, 4); // kWh
+
+        // Convert J to kWh
+        $Ec = $Ec / 3600000;
+
+        $meteor->energy_in_kWh = round($Ec, 4); // kWh
+    }
+
     echo json_encode($meteor);
