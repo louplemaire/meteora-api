@@ -3,29 +3,40 @@
     include './includes/config.php';
 
     // Select meteors
-    $query = $pdo->prepare('SELECT id, name, recclass, mass, found, year, reclat, reclong FROM meteorite_landings WHERE id = :id');
+    $query = $pdo->prepare('SELECT m.id, m.name, m.recclass, m.mass, m.found, m.year, m.reclat, m.reclong, l.city, l.country, l.flag, l.id as localisationId
+                            FROM meteorite_landings as m
+                            LEFT OUTER JOIN localisations as l
+                                ON m.id = l.id_meteor
+                            WHERE m.id = :id
+                            ');
     $query->bindValue(':id', $_GET['id'], PDO::PARAM_INT);
     $query->execute();
     $meteor = $query->fetch();
 
     // Fetch OpenCage API
-    if(!empty($meteor->reclat) || !empty($meteor->reclong)){
+    if(empty($meteor->localisationId) && !empty($meteor->reclat) && !empty($meteor->reclong)){
+        echo "=> load from api";
         $url = 'https://api.opencagedata.com/geocode/v1/json?q='.$meteor->reclat.'+'.$meteor->reclong.'&key='.OPEN_CAGE_API_KEY;
         $data = @file_get_contents($url);
-        $data = json_decode($data);
 
-        // City
-        if(!empty($data->results[0]->components->city)){
+        if ($data !== false) {
+            $data = json_decode($data);
+
+        // Save in database
+            $prepare = $pdo->prepare('
+                INSERT INTO
+                    localisations (id_meteor, city, country, flag)
+                VALUES
+                    (:id_meteor, :city, :country, :flag)
+            ');
+            $prepare->bindValue(':id_meteor', $meteor->id, PDO::PARAM_INT);
+            $prepare->bindValue(':city', $data->results[0]->components->city);
+            $prepare->bindValue(':country', $data->results[0]->components->country);
+            $prepare->bindValue(':flag', $data->results[0]->annotations->flag);
+            $prepare->execute();
+
             $meteor->city = $data->results[0]->components->city;
-        }
-
-        // Country
-        if(!empty($data->results[0]->components->country)){
             $meteor->country = $data->results[0]->components->country;
-        }
-
-        // Flag
-        if(!empty($data->results[0]->annotations->flag)){
             $meteor->flag = $data->results[0]->annotations->flag;
         }
     }
