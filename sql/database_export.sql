@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 19, 2020 at 02:09 PM
+-- Generation Time: Jun 19, 2020 at 04:18 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -29,10 +29,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `localisations` (
   `id` int(11) NOT NULL,
   `id_meteor` int(11) NOT NULL,
-  `city` varchar(190) COLLATE utf8mb4_bin NOT NULL,
-  `country` varchar(90) COLLATE utf8mb4_bin NOT NULL,
-  `flag` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+  `city` varchar(190) COLLATE utf8mb4_bin DEFAULT NULL,
+  `country` varchar(90) COLLATE utf8mb4_bin DEFAULT NULL,
+  `flag` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Dumping data for table `localisations`
+--
+
+INSERT INTO `localisations` (`id`, `id_meteor`, `city`, `country`, `flag`) VALUES
+(7, 1, 'Aachen', 'Germany', '🇩🇪'),
+(8, 6367, NULL, 'Libya', '🇱🇾'),
+(9, 6368, NULL, 'Libya', '🇱🇾');
 
 -- --------------------------------------------------------
 
@@ -45574,7 +45583,7 @@ ALTER TABLE `meteorite_landings`
 -- AUTO_INCREMENT for table `localisations`
 --
 ALTER TABLE `localisations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
