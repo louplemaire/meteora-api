@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 15, 2020 at 03:02 PM
+-- Generation Time: Jun 19, 2020 at 02:09 PM
 -- Server version: 5.7.26
--- PHP Version: 7.3.9
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `hetic_meteora`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `localisations`
+--
+
+CREATE TABLE `localisations` (
+  `id` int(11) NOT NULL,
+  `id_meteor` int(11) NOT NULL,
+  `city` varchar(190) COLLATE utf8mb4_bin NOT NULL,
+  `country` varchar(90) COLLATE utf8mb4_bin NOT NULL,
+  `flag` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
 
@@ -45540,11 +45554,27 @@ INSERT INTO `meteorite_landings` (`id`, `name`, `recclass`, `mass`, `found`, `ye
 --
 
 --
+-- Indexes for table `localisations`
+--
+ALTER TABLE `localisations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `meteorite_landings`
 --
 ALTER TABLE `meteorite_landings`
   ADD PRIMARY KEY (`id`),
   ADD KEY `year` (`year`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `localisations`
+--
+ALTER TABLE `localisations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
