@@ -29,14 +29,14 @@
                     (:id_meteor, :city, :country, :flag)
             ');
             $prepare->bindValue(':id_meteor', $meteor->id, PDO::PARAM_INT);
-            $prepare->bindValue(':city', $data->results[0]->components->city);
-            $prepare->bindValue(':country', $data->results[0]->components->country);
-            $prepare->bindValue(':flag', $data->results[0]->annotations->flag);
+            $prepare->bindValue(':city', $data->results[0]->components->city ?: null);
+            $prepare->bindValue(':country', $data->results[0]->components->country ?: null);
+            $prepare->bindValue(':flag', $data->results[0]->annotations->flag ?: null);
             $prepare->execute();
 
-            $meteor->city = $data->results[0]->components->city;
-            $meteor->country = $data->results[0]->components->country;
-            $meteor->flag = $data->results[0]->annotations->flag;
+            $meteor->city = $data->results[0]->components->city ?: '';
+            $meteor->country = $data->results[0]->components->country ?: '';
+            $meteor->flag = $data->results[0]->annotations->flag ?: '';
         }
     }
 
