@@ -83,6 +83,23 @@
         } else if(4000 <= $meteor->mass){
             $meteor->mass_comparison = "Woah that’s big";
         }
+
+        // Energy comparisons
+        if($meteor->energy_in_kWh < 0.2){
+            $meteor->energy_comparison = "Insignificant";
+        } else if(0.2 <= $meteor->energy_in_kWh && $meteor->energy_in_kWh < 0.8){
+            $mult = $meteor->energy_in_kWh / 0.27;
+
+            $meteor->energy_comparison = $mult > 1 ? 'The nutritional value of '.round($mult, 1).' meals' : 'The nutritional value of '.round($mult, 1).' meal';
+        } else if(0.8 <= $meteor->energy_in_kWh && $meteor->energy_in_kWh < 270){
+            $mult = $meteor->energy_in_kWh / 1;
+
+            $meteor->energy_comparison = $mult > 1 ? 'The explosion of '.round($mult, 1).' shells' : 'The explosion of '.round($mult, 1).' shell';
+        } else if(270 <= $meteor->energy_in_kWh){
+            $mult = $meteor->energy_in_kWh / 277;
+
+            $meteor->energy_comparison = $mult > 1 ? round($mult, 1).' lightnings during a thunderstorm' : round($mult, 1).' lightning during a thunderstorm';
+        }
     }
 
     echo json_encode($meteor);
