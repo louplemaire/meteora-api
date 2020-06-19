@@ -15,7 +15,6 @@
 
     // Fetch OpenCage API
     if(empty($meteor->localisationId) && !empty($meteor->reclat) && !empty($meteor->reclong)){
-        echo "=> load from api";
         $url = 'https://api.opencagedata.com/geocode/v1/json?q='.$meteor->reclat.'+'.$meteor->reclong.'&key='.OPEN_CAGE_API_KEY;
         $data = @file_get_contents($url);
 
