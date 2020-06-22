@@ -112,22 +112,22 @@
         }
     }
 
-    // Classification
+    // Classification description
     if(!empty($meteor->recclass)){
         if(substr($meteor->recclass, 0, 1) == 'H'){
-            $meteor->classification = 'High on iron';
+            $meteor->classification_description = 'High on iron';
         } else if(substr($meteor->recclass, 0, 1) == 'L'){
-            $meteor->classification = 'Low on Iron';
+            $meteor->classification_description = 'Low on Iron';
         } else if(substr($meteor->recclass, 0, 2) == 'LL'){
-            $meteor->classification = 'Low total iron and Low metal contents';
+            $meteor->classification_description = 'Low total iron and Low metal contents';
         } else if(substr($meteor->recclass, 0, 2) == 'EH'){
-            $meteor->classification = 'Pyroxene high on Iron';
+            $meteor->classification_description = 'Pyroxene high on Iron';
         } else if(substr($meteor->recclass, 0, 2) == 'EL'){
-            $meteor->classification = 'Pyroxene low on Iron';
+            $meteor->classification_description = 'Pyroxene low on Iron';
         } else if(substr($meteor->recclass, 0, 1) == 'C'){
-            $meteor->classification = 'Contains Carbon';
+            $meteor->classification_description = 'Contains Carbon';
         } else if(substr($meteor->recclass, 0, 1) == 'K'){
-            $meteor->classification = 'Very rich in oxidised Iron';
+            $meteor->classification_description = 'Very rich in oxidised Iron';
         }
     }
 
