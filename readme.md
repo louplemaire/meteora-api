@@ -28,4 +28,4 @@ Connect to the API with this url : ```https://meteora-api.louplemaire.fr```
 
 - 🗺 <a href="https://opencagedata.com" alt="OpenCage">OpenCage</a> API to convert latitude and longitude coordinates of NASA's data to get the place where the meteor fell
 
-> ⚠️ WARNING : This work was carried out as part of a pedagogical project and for pedagogical purposes. The exploitation rights have not been audited or acquired.
+> ⚠️ WARNING : This site has been created for educational purposes as part of the Grande Ecole curriculum of the HETIC school. The contents and data presented have not been the subject of a request for right of use. This site will in no case be exploited for commercial purposes.
