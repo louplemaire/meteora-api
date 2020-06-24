@@ -1,4 +1,4 @@
-# 🌍 METEORA API
+# 🔭 METEORA API
 > ☄️ This API is created for <a href="https://meteora.netlify.app" alt="METEORA">METEORA</a> project (<a href="https://github.com/RomainPct/meteora" alt="METEORA's repository">the repository</a>)
 
 ## 💻 Stack
