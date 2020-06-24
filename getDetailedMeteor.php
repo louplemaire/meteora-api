@@ -21,7 +21,7 @@
         if ($data !== false) {
             $data = json_decode($data);
 
-        // Save in database
+            // Save in database
             $prepare = $pdo->prepare('
                 INSERT INTO
                     localisations (id_meteor, city, country, flag)
