@@ -23,7 +23,7 @@ Connect to the API with this url : ```https://meteora-api.louplemaire.fr```
 | getAvailableYears | List of year with the count of meteors |
 | countFallenMeteors | Get the number of fallen meteors of the year |
 
-## We use
+## 🛠 This API uses
 - 🚀 <a href="https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh" alt="NASA's Open Data">NASA's Open Data</a> to recover information on all of the known meteor landings
 
 - 🗺 <a href="https://opencagedata.com" alt="OpenCage">OpenCage</a> API to convert latitude and longitude coordinates of NASA's data to get the place where the meteor fell
